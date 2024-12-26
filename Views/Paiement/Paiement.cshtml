@@ -1,0 +1,51 @@
+@model ges_commande.Models.entity.Commande
+@using ges_commande.Models.Enum
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Paiement</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="container mx-auto py-8">
+        <h1 class="text-2xl font-bold mb-4">Paiement de la commande</h1>
+        <div class="bg-white p-6 shadow-md rounded border border-gray-200">
+            <p><strong>Commande ID :</strong> @Model.Id</p>
+            <p><strong>Montant :</strong> @Model.montant FCFA</p>
+            <p><strong>Client :</strong> @Model.Client?.Prenom @Model.Client?.Nom </p>
+            <p><strong>État actuel :</strong> @Model.Etat</p>
+        </div>
+
+        @if (Model.Etat == Etat.Payer) // Si la commande est déjà payée
+        {
+                        <div class="bg-green-100 p-6 mt-6 rounded border border-green-200">
+                <p><strong>Commande payée avec succès.</strong></p>
+            </div>
+
+        }
+        else // Sinon, afficher le formulaire de paiement
+        {
+            <form asp-action="PaiementConfirmed" asp-route-id="@Model.Id" method="post" class="mt-6">
+                <div class="mb-4">
+                    <label for="moyenPaiement" class="block text-sm font-medium text-gray-700">Moyen de paiement</label>
+                    <select name="moyenPaiement" id="moyenPaiement" class="py-2 px-3 border border-gray-300 rounded-md w-full">
+                        @foreach (var paymentType in Enum.GetValues(typeof(TypePaiement)).Cast<TypePaiement>())
+                        {
+                            <option value="@paymentType">@paymentType</option>
+                        }
+                    </select>
+                </div>
+
+                <button type="submit" class="bg-green-500 text-white py-2 px-4 rounded-md">Confirmer le paiement</button>
+            </form>
+        }
+
+        <!-- Bouton de retour -->
+        <div class="mt-6">
+            <a href="@Url.Action("CommandeClient", "Commande")" class="bg-blue-500 text-white py-2 px-4 rounded-md">Retour à la liste des commandes</a>
+        </div>
+    </div>
+</body>
+</html>

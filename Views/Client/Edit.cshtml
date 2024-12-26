@@ -1,0 +1,86 @@
+@model ges_commande.Models.entity.Client
+
+@{
+   @* Layout= "_Layout"; *@
+}
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 py-10">
+
+    <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+        <h4 class="text-2xl font-semibold text-center text-gray-700">Modifier Client</h4>
+        <hr class="my-4">
+
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-4"></div>
+
+            <input type="hidden" asp-for="Id" />
+
+            <div class="mb-4">
+                <label asp-for="Solde" class="block text-gray-600 font-medium">Solde</label>
+                <input asp-for="Solde" class="mt-2 p-3 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                <span asp-validation-for="Solde" class="text-red-500 text-sm"></span>
+            </div>
+
+            <div class="mb-4">
+                <label asp-for="Adresse" class="block text-gray-600 font-medium">Adresse</label>
+                <input asp-for="Adresse" class="mt-2 p-3 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                <span asp-validation-for="Adresse" class="text-red-500 text-sm"></span>
+            </div>
+
+            <div class="mb-4">
+                <label asp-for="UserId" class="block text-gray-600 font-medium">Utilisateur</label>
+                <select asp-for="UserId" class="mt-2 p-3 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" asp-items="ViewBag.UserId"></select>
+                <span asp-validation-for="UserId" class="text-red-500 text-sm"></span>
+            </div>
+
+            <div class="mb-4">
+                <label asp-for="Nom" class="block text-gray-600 font-medium">Nom</label>
+                <input asp-for="Nom" class="mt-2 p-3 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                <span asp-validation-for="Nom" class="text-red-500 text-sm"></span>
+            </div>
+
+            <div class="mb-4">
+                <label asp-for="Prenom" class="block text-gray-600 font-medium">Prénom</label>
+                <input asp-for="Prenom" class="mt-2 p-3 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                <span asp-validation-for="Prenom" class="text-red-500 text-sm"></span>
+            </div>
+
+            <div class="mb-4">
+                <label asp-for="Telephone" class="block text-gray-600 font-medium">Téléphone</label>
+                <input asp-for="Telephone" class="mt-2 p-3 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                <span asp-validation-for="Telephone" class="text-red-500 text-sm"></span>
+            </div>
+
+            <div class="mb-4">
+                <label asp-for="CreateAt" class="block text-gray-600 font-medium">Date de Création</label>
+                <input asp-for="CreateAt" class="mt-2 p-3 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                <span asp-validation-for="CreateAt" class="text-red-500 text-sm"></span>
+            </div>
+
+            <div class="mb-4">
+                <label asp-for="UpdateAt" class="block text-gray-600 font-medium">Date de Mise à Jour</label>
+                <input asp-for="UpdateAt" class="mt-2 p-3 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                <span asp-validation-for="UpdateAt" class="text-red-500 text-sm"></span>
+            </div>
+
+            <div class="mb-4">
+                <input type="submit" value="Enregistrer" class="w-full py-3 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            </div>
+        </form>
+
+        <div class="text-center">
+            <a asp-action="Index" class="text-blue-500 hover:underline">Retour à la liste</a>
+        </div>
+    </div>
+
+</body>
+</html>

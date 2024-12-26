@@ -1,0 +1,50 @@
+@model IEnumerable<ges_commande.Models.entity.Commande>
+
+@{
+   @* Layout= "_Layout"; *@
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="container mx-auto py-8">
+        <h1 class="text-2xl font-bold mb-4">Liste des commandes</h1>
+        <div class="overflow-x-auto">
+            <table class="table-auto w-full bg-white shadow-md rounded border border-blue-600">
+                <thead class="bg-blue-600 text-white uppercase text-sm leading-normal">
+                    <tr>
+                        <th class="py-3 px-6 text-center">Date</th>
+                        <th class="py-3 px-6 text-left">@Html.DisplayNameFor(model => model.montant)</th>
+                        <th class="py-3 px-6 text-left">@Html.DisplayNameFor(model => model.Client)</th>
+                        <th class="py-3 px-6 text-left">Etat</th>
+                        <th class="py-3 px-6 text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-600 text-sm font-light">
+                    @foreach (var item in Model) {
+                        <tr class="border-b border-blue-200 hover:bg-blue-50">
+                            <td class="py-3 px-6 text-left">@Html.DisplayFor(modelItem => item.CreateAt)</td>
+                            <td class="py-3 px-6 text-left">@Html.DisplayFor(modelItem => item.montant) FCFA</td>
+                            <td class="py-3 px-6 text-left">
+                                @Html.DisplayFor(modelItem => item.Client.Prenom) 
+                                @Html.DisplayFor(modelItem => item.Client.Nom)
+                            </td>
+                            <td class="py-3 px-6 text-left">
+                                <span class="text-blue-500">@Html.DisplayFor(modelItem => item.Etat)</span>
+                            </td>
+                            <td class="py-3 px-6 text-center">
+                                <a asp-action="transferer" asp-route-id="@item.Id" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-200">Transférer</a> 
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

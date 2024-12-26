@@ -1,0 +1,43 @@
+@model ges_commande.Models.entity.User
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="container mx-auto px-4 py-8">
+    <div class="bg-white rounded-lg shadow-lg p-6">
+        <h2 class="text-3xl font-bold mb-4 text-center">Informations utilisateur</h2>
+        <hr class="my-4">
+        <dl class="grid grid-cols-2 gap-4">
+                <div>
+                <dt class="font-bold text-lg">Nom :</dt>
+                <dd class="text-lg">@Html.DisplayFor(model => model.Nom)</dd>
+            </div>
+            <div>
+                <dt class="font-bold text-lg">Prénom :</dt>
+                <dd class="text-lg">@Html.DisplayFor(model => model.Prenom)</dd>
+            </div>
+            <div>
+                <dt class="font-bold text-lg">Identifiant :</dt>
+                <dd class="text-lg">@Html.DisplayFor(model => model.login)</dd>
+            </div>
+            <div>
+                <dt class="font-bold text-lg">Mot de passe :</dt>
+                <dd class="text-lg">@Html.DisplayFor(model => model.password)</dd>
+            </div>
+            <div>
+                <dt class="font-bold text-lg">Rôle :</dt>
+                <dd class="text-lg">@Html.DisplayFor(model => model.role)</dd>
+            </div>
+ 
+            <div>
+                <dt class="font-bold text-lg">Téléphone :</dt>
+                <dd class="text-lg">@Html.DisplayFor(model => model.Telephone)</dd>
+            </div>
+        </dl>
+        <div class="mt-4 flex justify-center ">
+            <a href="@Url.Action("Edit", new { id = Model?.Id })" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-8">Modifier</a>
+            <a href="@Url.Action("MesUser","User")" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded ml-8">Retour</a>
+        </div>
+    </div>
+</div>

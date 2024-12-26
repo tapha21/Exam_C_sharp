@@ -1,0 +1,56 @@
+@model IEnumerable<ges_commande.Models.entity.Client>
+
+@{
+   @* Layout= "_Layout"; *@
+}
+
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-blue-50">
+
+    <div class="container mx-auto p-6 mt-6 bg-white rounded-xl shadow-xl">
+        <h1 class="text-4xl font-bold mb-6 text-blue-800 text-center">Clients</h1>
+        
+        <p class="mb-4 text-center">
+            <a asp-action="Create" class="inline-block bg-blue-600 hover:bg-blue-800 text-white font-semibold py-2 px-6 rounded-lg shadow-lg transition duration-300">Créer un nouveau client</a>
+        </p>
+
+        <table class="table-auto w-full mb-6 bg-white rounded-lg shadow-md overflow-hidden">
+            <thead>
+                <tr class="bg-blue-600 text-white">
+                    <th class="px-6 py-3 text-left">Prénom</th>
+                    <th class="px-6 py-3 text-left">Nom</th>
+                    <th class="px-6 py-3 text-left">Téléphone</th>
+                    <th class="px-6 py-3 text-left">Adresse</th>
+                    <th class="px-6 py-3 text-left">Solde</th>
+                    <th class="px-6 py-3 text-left">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model) {
+                    <tr class="border-t border-gray-200 hover:bg-blue-100 transition duration-300">
+                        <td class="px-6 py-4">@Html.DisplayFor(modelItem => item.Prenom)</td>
+                        <td class="px-6 py-4">@Html.DisplayFor(modelItem => item.Nom)</td>
+                        <td class="px-6 py-4">@Html.DisplayFor(modelItem => item.Telephone)</td>
+                        <td class="px-6 py-4">@Html.DisplayFor(modelItem => item.Adresse)</td>
+                        <td class="px-6 py-4">@Html.DisplayFor(modelItem => item.Solde)</td>
+                        <td class="px-6 py-4">
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md shadow-md transition duration-300">Modifier</a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="inline-block bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-md shadow-md transition duration-300 ml-2">Détails</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="inline-block bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-md shadow-md transition duration-300 ml-2">Supprimer</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

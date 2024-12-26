@@ -1,0 +1,48 @@
+@model ges_commande.Models.Securite.LoginModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <!-- Inclure Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="margin: 0; padding: 0; height: 100vh; display: flex; justify-content: center; align-items: center; background-image: linear-gradient(to bottom, #f7f7f7, #ffffff);">
+
+    <div class="card shadow-lg" style="width: 500px; border-radius: 15px; background-color: #ffffff; box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);">
+        <div class="card-body p-5">
+            <h2 class="text-center mb-4" style="font-weight: bold; font-size: 28px; color: #333333;">Connexion</h2>
+
+            <form asp-action="Login" method="post">
+                <div class="form-group mb-4">
+                    <label asp-for="Username" class="font-weight-bold" style="color: #666666; font-size: 16px;">Nom d'utilisateur</label>
+                    <input asp-for="Username" class="form-control rounded-pill" style="border: 1px solid #cccccc; padding: 15px; font-size: 18px;" />
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-4">
+                    <label asp-for="Password" class="font-weight-bold" style="color: #666666; font-size: 16px;">Mot de passe</label>
+                    <input asp-for="Password" class="form-control rounded-pill" type="password" style="border: 1px solid #cccccc; padding: 15px; font-size: 18px;" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <!-- Bouton de connexion en bleu avec texte blanc -->
+                <button type="submit" class="btn btn-primary rounded-pill w-100 mb-3" style="background-color: #007bff; color: white; padding: 15px; font-size: 18px; border: none;">Se connecter</button>
+            </form>
+
+            <!-- Afficher les erreurs de validation -->
+            <div asp-validation-summary="All" class="text-danger mt-3"></div>
+
+            <p class="text-center mt-4">
+                <a asp-action="ForgotPassword" class="text-decoration-none" style="color: #007bff; font-size: 14px;">Mot de passe oublié ?</a>
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] | GesCommande</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/output.css" asp-append-version="true" /> <!-- Tailwind CSS output -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/GesDetteWeb.styles.css" asp-append-version="true" />
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-100 dark:bg-gray-900">
+    <header>
+        <!-- Navbar -->
+        <nav class="border-gray-200 bg-gray-800 dark:bg-gray-800 dark:border-gray-700">
+            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                    <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">GesDetteWeb</span>
+                </a>
+                <button data-collapse-toggle="navbar-hamburger" type="button" class="inline-flex items-center justify-center p-2 w-10 h-10 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-hamburger" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                    </svg>
+                </button>
+                <div class="hidden w-full" id="navbar-hamburger">
+                    <ul class="flex flex-col font-medium mt-4 rounded-lg bg-gray-800 dark:bg-gray-800 dark:border-gray-700 text-sm text-gray-500">
+                        <!-- Client Link -->
+                        <li>
+                            <a href="@Url.Action("Index", "Client")" class="block py-2 px-3 text-white rounded hover:text-white hover:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Clients</a>
+                        </li>
+                        <!-- Articles Link -->
+                        <li>
+                            <a href="@Url.Action("MesProduit", "Produit")" class="block py-2 px-3 text-white rounded hover:text-white hover:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Produit</a>
+                        </li>
+                        <!-- User Link -->
+                        <li>
+                            <a href="@Url.Action("MesUser", "User")" class="block py-2 px-3 text-white rounded hover:text-white hover:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Users</a>
+                        </li>
+                        <!-- Dettes Link -->
+                        <li>
+                            <a href="@Url.Action("CommandeRS", "Commande")" class="block py-2 px-3 text-white rounded hover:text-white hover:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Commande</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <div class="container mx-auto">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    
+    <footer class="border-t footer text-muted">
+        <div class="container py-3">
+            &copy; 2024 - GesCommande - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+ <script src="~/lib/jquery/dist/jquery.min.js"></script> <!-- jQuery -->
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script> <!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script> <!-- Flowbite -->
+<script src="~/js/site.js" asp-append-version="true"></script> <!-- Votre JS personnalisé -->
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

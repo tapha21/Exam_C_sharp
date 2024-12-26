@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] | GesCommande</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/output.css" asp-append-version="true" /> <!-- Tailwind CSS output -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/GesDetteWeb.styles.css" asp-append-version="true" />
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-100 dark:bg-gray-900">
+    <header>
+        <!-- Navbar -->
+        <nav class="border-gray-200 bg-gray-800 dark:bg-gray-800 dark:border-gray-700">
+            <div class="max-w-screen-xl flex items-center justify-between mx-auto p-4">
+                <a href="/Produit/Clientviews" class="flex items-center space-x-3 rtl:space-x-reverse">
+                    <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">GesDetteWeb</span>
+                </a>
+
+                <!-- Navbar links -->
+                <div class="flex space-x-4">
+                    <a href="@Url.Action("CommandeClient", "Commande")" class="text-white hover:bg-gray-700 rounded px-3 py-2">Mes Commande</a>
+                    <!-- Panier Link -->
+                    <a href="@Url.Action("Panier", "Produit")" class="text-white hover:bg-gray-700 rounded px-3 py-2">Panier</a>
+                    <!-- Mes Commandes Link -->
+                    <a href="@Url.Action("Logout", "securite")" class="text-white hover:bg-gray-700 rounded px-3 py-2">Deconnexion</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <div class="container mx-auto">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    
+    <footer class="border-t footer text-muted">
+        <div class="container py-3">
+            &copy; 2024 - GesCommande - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script> <!-- jQuery -->
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script> <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script> <!-- Flowbite -->
+    <script src="~/js/site.js" asp-append-version="true"></script> <!-- Votre JS personnalisé -->
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

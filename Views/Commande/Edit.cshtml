@@ -1,0 +1,59 @@
+@model ges_commande.Models.entity.Commande
+
+@{
+   @* Layout= "_Layout"; *@
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Modifier</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-8 mt-10 bg-white shadow-md rounded-lg">
+        <h4 class="text-2xl font-bold text-gray-800 mb-6">Modifier la commande</h4>
+        <hr class="border-gray-300 mb-6" />
+        <div class="max-w-lg mx-auto">
+            <form asp-action="Edit" class="space-y-6">
+                <div asp-validation-summary="ModelOnly" class="text-red-600 text-sm"></div>
+                <input type="hidden" asp-for="Id" />
+                <div class="flex flex-col">
+                    <label asp-for="dateTime" class="mb-1 text-gray-700 font-medium">Date</label>
+                    <input asp-for="dateTime" class="px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+                    <span asp-validation-for="dateTime" class="text-red-500 text-sm"></span>
+                </div>
+                <div class="flex flex-col">
+                    <label asp-for="montant" class="mb-1 text-gray-700 font-medium">Montant</label>
+                    <input asp-for="montant" class="px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+                    <span asp-validation-for="montant" class="text-red-500 text-sm"></span>
+                </div>
+                <div class="flex flex-col">
+                    <label asp-for="ClientId" class="mb-1 text-gray-700 font-medium">Client</label>
+                    <select asp-for="ClientId" class="px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" asp-items="ViewBag.clientID"></select>
+                    <span asp-validation-for="ClientId" class="text-red-500 text-sm"></span>
+                </div>
+                <div class="flex flex-col">
+                    <label asp-for="livreurID" class="mb-1 text-gray-700 font-medium">Livreur</label>
+                    <select asp-for="livreurID" class="px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" asp-items="ViewBag.livreurID"></select>
+                    <span asp-validation-for="livreurID" class="text-red-500 text-sm"></span>
+                </div>
+                <div class="flex flex-col">
+                    <label asp-for="CreateAt" class="mb-1 text-gray-700 font-medium">Créé le</label>
+                    <input asp-for="CreateAt" class="px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+                    <span asp-validation-for="CreateAt" class="text-red-500 text-sm"></span>
+                </div>
+                <div class="flex flex-col">
+                    <label asp-for="UpdateAt" class="mb-1 text-gray-700 font-medium">Mis à jour le</label>
+                    <input asp-for="UpdateAt" class="px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+                    <span asp-validation-for="UpdateAt" class="text-red-500 text-sm"></span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <input type="submit" value="Enregistrer" class="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 shadow-md" />
+                    <a asp-action="Index" class="text-gray-700 hover:underline">Retour à la liste</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+@model IEnumerable<ges_commande.Models.entity.Produit>
+
+@{
+    Layout = "MenuClient";  
+}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Votre Panier</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-6">
+        <h1 class="text-3xl font-semibold text-gray-800 mb-6 text-center">Votre Panier</h1>
+
+        @if (!Model.Any())
+        {
+            <p class="text-center text-gray-600 text-lg">Votre panier est vide.</p>
+        }
+        else
+        {
+            <table class="table-auto w-full bg-white rounded-lg shadow-lg">
+                <thead>
+                    <tr class="bg-gray-800 text-white">
+                        <th class="px-4 py-2">Image</th>
+                        <th class="px-4 py-2">Produit</th>
+                        <th class="px-4 py-2">Prix</th>
+                        <th class="px-4 py-2">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var produit in Model)
+                    {
+                        <tr class="text-gray-800 border-b">
+                            <td class="px-4 py-2">
+                                <img src="@produit.image" alt="@produit.Libelle" class="w-20 h-20 object-cover rounded-md" />
+                            </td>
+                            <td class="px-4 py-2 text-center">@produit.Libelle</td>
+                            <td class="px-4 py-2 text-center">@produit.Prix FCFA</td>
+                            <td class="px-4 py-2 text-center">
+                                <a href="@Url.Action("Supprimer", "Produit", new { id = produit.Id })" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">Supprimer</a> 
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr class="bg-gray-100 font-semibold">
+                        <td colspan="3" class="text-left px-4 py-2 text-red-500">
+                            Total : @Model.Sum(p => p.Prix) FCFA
+                        </td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <div class="mt-6 flex justify-end">
+                <a href="@Url.Action("Commander", "Produit")" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Valider</a>
+            </div>
+        }
+    </div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+@model ges_commande.Models.entity.Commande
+
+@{
+    @* Layout= "_Layout"; *@
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-blue-100">
+    <div class="container mx-auto p-4 mt-4 bg-blue-200 rounded-lg shadow-md">
+        <h4 class="text-3xl font-bold mb-4 text-blue-800">Créer une nouvelle commande</h4>
+        <hr class="mb-4" />
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <div class="form-group mb-4">
+                        <label asp-for="dateTime" class="control-label text-blue-800 font-bold text-lg"></label>
+                        <input asp-for="dateTime" class="form-control rounded-lg shadow-md p-2 border border-blue-400 text-lg" />
+                        <span asp-validation-for="dateTime" class="text-danger text-lg"></span>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label asp-for="montant" class="control-label text-blue-800 font-bold text-lg"></label>
+                        <input asp-for="montant" class="form-control rounded-lg shadow-md p-2 border border-blue-400 text-lg" />
+                        <span asp-validation-for="montant" class="text-danger text-lg"></span>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <div class="form-group mb-4">
+                        <label asp-for="ClientId" class="control-label text-blue-800 font-bold text-lg"></label>
+                        <select asp-for="ClientId" class="form-control rounded-lg shadow-md p-2 border border-blue-400 text-lg" asp-items="ViewBag.clientID"></select>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label asp-for="livreurID" class="control-label text-blue-800 font-bold text-lg"></label>
+                        <select asp-for="livreurID" class="form-control rounded-lg shadow-md p-2 border border-blue-400 text-lg" asp-items="ViewBag.livreurID"></select>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <div class="form-group mb-4">
+                        <label asp-for="CreateAt" class="control-label text-blue-800 font-bold text-lg"></label>
+                        <input asp-for="CreateAt" class="form-control rounded-lg shadow-md p-2 border border-blue-400 text-lg" />
+                        <span asp-validation-for="CreateAt" class="text-danger text-lg"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group mb-4">
+                <input type="submit" value="Créer" class="btn btn-primary rounded-lg shadow-md p-2 bg-blue-500 hover:bg-blue-700 text-white text-lg" />
+            </div>
+    </form>
+    <div class="flex justify-center mt-4">
+        <a asp-action="MesCommande" class="text-blue-800 font-bold hover:text-blue-500 text-lg">Retour à la liste</a>
+    </div>
+</div>
+</body>
+</html>

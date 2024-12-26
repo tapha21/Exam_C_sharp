@@ -1,0 +1,55 @@
+@model ges_commande.Models.entity.Commande
+
+@{
+    ViewData["Title"] = "Préparer la livraison";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["Title"]</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="container mx-auto py-8">
+        <h1 class="text-2xl font-bold mb-4">Préparer la livraison pour la commande #@Model.Id</h1>
+        <form asp-action="ConfirmerLivraison" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 border border-blue-600">
+            <input type="hidden" asp-for="Id" />
+            
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="dateTime">
+                    Date et heure de livraison
+                </label>
+                <input asp-for="dateTime" type="datetime-local" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+                <span asp-validation-for="dateTime" class="text-red-500 text-xs italic"></span>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="AdresseLivraison">
+                    Adresse de livraison
+                </label>
+                <input type="text" id="AdresseLivraison" name="AdresseLivraison" placeholder="Adresse de livraison" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="livreurID">
+                    Sélectionnez un livreur
+                </label>
+                <select asp-for="livreurID" asp-items="ViewBag.Livreurs" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value="">-- Choisissez un livreur --</option>
+                </select>
+                <span asp-validation-for="livreurID" class="text-red-500 text-xs italic"></span>
+            </div>
+
+            <div class="flex items-center justify-between">
+                <button class="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                    Confirmer la livraison
+                </button>
+                <a asp-action="Index" class="text-blue-600 hover:underline">Annuler</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

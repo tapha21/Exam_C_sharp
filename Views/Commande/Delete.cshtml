@@ -1,0 +1,78 @@
+@model ges_commande.Models.entity.Commande
+@{
+   @* Layout= "_Layout"; *@
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-8 mt-10 bg-white shadow-md rounded-lg">
+        <h3 class="text-2xl font-bold text-red-600 mb-6">Êtes-vous sûr de vouloir supprimer cette commande ?</h3>
+        <div class="mb-6">
+            <h4 class="text-lg font-semibold text-gray-700">Détails de la commande</h4>
+            <hr class="border-gray-300 my-4" />
+            <dl class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2">
+                <div>
+                    <dt class="text-sm font-medium text-gray-500">
+                        @Html.DisplayNameFor(model => model.dateTime)
+                    </dt>
+                    <dd class="text-lg text-gray-800">
+                        @Html.DisplayFor(model => model.dateTime)
+                    </dd>
+                </div>
+                <div>
+                    <dt class="text-sm font-medium text-gray-500">
+                        @Html.DisplayNameFor(model => model.montant)
+                    </dt>
+                    <dd class="text-lg text-gray-800">
+                        @Html.DisplayFor(model => model.montant)
+                    </dd>
+                </div>
+                <div>
+                    <dt class="text-sm font-medium text-gray-500">
+                        @Html.DisplayNameFor(model => model.Client)
+                    </dt>
+                    <dd class="text-lg text-gray-800">
+                        @Html.DisplayFor(model => model.Client.Id)
+                    </dd>
+                </div>
+                <div>
+                    <dt class="text-sm font-medium text-gray-500">
+                        @Html.DisplayNameFor(model => model.Livreur)
+                    </dt>
+                    <dd class="text-lg text-gray-800">
+                        @Html.DisplayFor(model => model.Livreur.Id)
+                    </dd>
+                </div>
+                <div>
+                    <dt class="text-sm font-medium text-gray-500">
+                        @Html.DisplayNameFor(model => model.CreateAt)
+                    </dt>
+                    <dd class="text-lg text-gray-800">
+                        @Html.DisplayFor(model => model.CreateAt)
+                    </dd>
+                </div>
+                <div>
+                    <dt class="text-sm font-medium text-gray-500">
+                        @Html.DisplayNameFor(model => model.UpdateAt)
+                    </dt>
+                    <dd class="text-lg text-gray-800">
+                        @Html.DisplayFor(model => model.UpdateAt)
+                    </dd>
+                </div>
+            </dl>
+        </div>
+
+        <form asp-action="Delete" class="flex items-center space-x-4">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Supprimer" class="bg-red-500 text-white px-6 py-2 rounded-md hover:bg-red-600 cursor-pointer shadow-md" />
+            <a asp-action="Index" class="bg-gray-200 text-gray-800 px-6 py-2 rounded-md hover:bg-gray-300 cursor-pointer shadow-md">Retour à la liste</a>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+@model IEnumerable<ges_commande.Models.entity.Produit>
+
+@{
+    Layout = "MenuClient";  
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Liste des Produits</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <!-- Page de garde -->
+    <section class="bg-cover bg-center h-96" style="background-image: url(''); border-radius: 12px;">
+        <div class="flex items-center justify-center h-full bg-black bg-opacity-50 rounded-lg">
+            <h1 class="text-white text-3xl sm:text-5xl font-bold text-center p-4">Bienvenue sur notre site de Produits</h1>
+        </div>
+    </section>
+
+    <!-- Liste des produits -->
+    <div class="container mx-auto p-6">
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6 text-center">Nos Produits</h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                @foreach (var produit in Model)
+                {
+                    <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-200 ease-in-out">
+                        <img src="@produit.image" alt="@produit.Libelle" class="w-full h-48 object-cover rounded-lg mb-4" />
+                        <h1 class="text-2xl font-semibold text-gray-800 text-center truncate">@produit.Libelle</h1>
+                        <p class="text-gray-600 text-2xl font-semibold">Prix: <span class="text-gray-800">@produit.Prix</span> FCFA</p>
+
+                        <div class="mt-4">
+                            <a href="@Url.Action("AjouterPanier", "Produit", new { id = produit.Id })" class="bg-blue-900 hover:bg-green-600 text-white font-bold py-2 px-4 rounded shadow w-full text-center">Ajouter au Panier</a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>

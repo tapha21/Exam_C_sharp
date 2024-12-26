@@ -1,0 +1,88 @@
+@model ges_commande.Models.entity.Produit
+
+@{
+   @* Layout= "_Layout"; *@
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modifier le Produit</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-6">
+        <div class="bg-white rounded-lg shadow-lg p-8">
+            <h4 class="text-2xl font-semibold text-gray-800 mb-6">Modifier le Produit</h4>
+            <hr class="mb-6">
+            
+            <form asp-action="Edit" enctype="multipart/form-data" class="space-y-4">
+                <div asp-validation-summary="ModelOnly" class="text-red-500"></div>
+
+ <!-- Image (upload file) -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Image</label>
+                    <input type="file" name="Image" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+                    @if (!string.IsNullOrEmpty(Model.image))
+                    {
+                        <div class="mt-4">
+                            <label class="block text-sm font-medium text-gray-700">Image actuelle</label>
+                            <img src="@Model.image" alt="Image produit" class="w-32 h-32 object-cover mt-2" />
+                        </div>
+                    }
+                </div>
+                <!-- Libellé -->
+                <div>
+                    <label asp-for="Libelle" class="block text-sm font-medium text-gray-700">Libellé</label>
+                    <input asp-for="Libelle" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+                    <span asp-validation-for="Libelle" class="text-red-500 text-sm"></span>
+                </div>
+
+                <!-- Prix -->
+                <div>
+                    <label asp-for="Prix" class="block text-sm font-medium text-gray-700">Prix</label>
+                    <input asp-for="Prix" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+                    <span asp-validation-for="Prix" class="text-red-500 text-sm"></span>
+                </div>
+
+                <!-- Quantité -->
+                <div>
+                    <label asp-for="Quantite" class="block text-sm font-medium text-gray-700">Quantité</label>
+                    <input asp-for="Quantite" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+                    <span asp-validation-for="Quantite" class="text-red-500 text-sm"></span>
+                </div>
+
+                <!-- Champ caché pour l'ID -->
+                <input type="hidden" asp-for="Id" />
+
+                <!-- Date de création -->
+                <div>
+                    <label asp-for="CreateAt" class="block text-sm font-medium text-gray-700">Date de création</label>
+                    <input asp-for="CreateAt" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+                    <span asp-validation-for="CreateAt" class="text-red-500 text-sm"></span>
+                </div>
+
+                <!-- Dernière mise à jour -->
+                <div>
+                    <label asp-for="UpdateAt" class="block text-sm font-medium text-gray-700">Dernière mise à jour</label>
+                    <input asp-for="UpdateAt" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
+                    <span asp-validation-for="UpdateAt" class="text-red-500 text-sm"></span>
+                </div>
+
+               
+
+                <!-- Boutons -->
+                <div class="flex items-center space-x-4">
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md shadow">
+                        Enregistrer
+                    </button>
+                    <a asp-action="MesProduit" class="text-blue-500 hover:text-blue-700 font-medium">
+                        Retour à la liste
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ges_commande", "ges_commande.csproj", "{54AB69E9-D765-4F43-9504-C3E61865054D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{54AB69E9-D765-4F43-9504-C3E61865054D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54AB69E9-D765-4F43-9504-C3E61865054D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54AB69E9-D765-4F43-9504-C3E61865054D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54AB69E9-D765-4F43-9504-C3E61865054D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8C880389-9961-4468-897C-663DED6DF7EA}
+	EndGlobalSection
+EndGlobal

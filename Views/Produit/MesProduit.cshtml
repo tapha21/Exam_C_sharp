@@ -1,0 +1,111 @@
+@model IEnumerable<ges_commande.Models.entity.Produit>
+@{
+   @* Layout= "_Layout"; *@
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Produits</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-8">
+        <div class="text-center mb-6">
+            <h1 class="text-4xl font-bold text-gray-800"> Mes Produits</h1>
+        </div>
+
+      <div class="flex justify-between items-center mb-6">
+    <!-- Formulaire pour le filtre centralisé -->
+    <form asp-action="MesProduit" method="get" class="flex justify-center w-1/3 items-center mx-auto">
+                <label for="disponibilite" class="mr-2 text-gray-700 font-medium">Filtrer Par :</label>
+                <select name="disponibilite" id="disponibilite" class="py-3 px-4 text-lg border border-gray-300 rounded-md">
+                    @if (ViewBag.Disponibilite == "")
+                    {
+                        <option value="" selected>Tous</option>
+                    }
+                    else
+                    {
+                        <option value="">Tous</option>
+                    }
+                    @if (ViewBag.Disponibilite == "true")
+                    {
+                        <option value="true" selected>Disponible</option>
+                    }
+                    else
+                    {
+                        <option value="true">Disponible</option>
+                    }
+                    @if (ViewBag.Disponibilite == "false")
+                    {
+                        <option value="false" selected>Non disponible</option>
+                    }
+                    else
+                    {
+                        <option value="false">Non disponible</option>
+                    }
+                </select>
+                <button type="submit" class="ml-3 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                    Filtrer
+                </button>
+            </form>
+        <div class="flex justify-end w-1/3">
+        <a asp-action="Create" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Créer un nouveau produit
+        </a>
+    </div>
+
+    
+</div>
+
+
+
+        <!-- Tableau stylisé et centré -->
+        <div class="overflow-x-auto">
+            <table class="table-auto border-collapse border border-blue-400 mx-auto">
+                <thead>
+                    <tr class="bg-blue-300 text-white">
+                        <th class="border border-blue-400 px-6 py-3 text-left">image</th>
+                        <th class="border border-blue-400 px-6 py-3 text-left">Libellé</th>
+                        <th class="border border-blue-400 px-6 py-3 text-left">Prix</th>
+                        <th class="border border-blue-400 px-6 py-3 text-left">Quantité</th>
+                        <th class="border border-blue-400 px-6 py-3 text-left">Disponibilité</th>
+                        <th class="border border-blue-400 px-6 py-3 text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="hover:bg-blue-100">
+                    <td class="border border-blue-400 px-6 py-3">
+                    <img src="@item.image" alt="Image produit" class="w-16 h-16 object-cover" />
+                </td>
+                            <td class="border border-blue-400 px-6 py-3">@Html.DisplayFor(modelItem => item.Libelle)</td>
+                            <td class="border border-blue-400 px-6 py-3">@Html.DisplayFor(modelItem => item.Prix) FCFA</td>
+                            <td class="border border-blue-400 px-6 py-3">@Html.DisplayFor(modelItem => item.Quantite)</td>
+                            <td class="border border-blue-400 px-6 py-3">
+                                @(item.Quantite > 0 ? "Disponible" : "Non disponible")
+                            </td>
+                            <td class="border border-blue-400 px-6 py-3 text-center">
+                                <a asp-action="Edit" asp-route-id="@item.Id" 
+                                   class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
+                                   Modifier
+                                </a>
+                                <a asp-action="Details" asp-route-id="@item.Id" 
+                                   class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                                   Détails
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" 
+                                   class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                                   Supprimer
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

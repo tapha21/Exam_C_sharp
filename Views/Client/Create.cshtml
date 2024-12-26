@@ -1,0 +1,71 @@
+@model ges_commande.Models.entity.Client
+
+@{
+   @* Layout= "_Layout"; *@
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-blue-100">
+    <div class="container mx-auto p-4 mt-4 bg-blue-200 rounded-lg shadow-md">
+        <h4 class="text-3xl font-bold mb-4 text-blue-800">Créer un nouveau client</h4>
+        <hr class="mb-4" />
+        <div class="grid grid-cols-2 gap-4">
+            <div class="bg-white rounded-lg shadow-md p-4">
+                <h5 class="text-xl font-bold mb-2 text-blue-800">Informations client</h5>
+                <div class="form-group mb-4">
+                    <label asp-for="Nom" class="control-label text-blue-800 font-bold text-lg"></label>
+                    <input asp-for="Nom" class="form-control rounded-lg shadow-md p-2 border border-blue-400 text-lg" />
+                    <span asp-validation-for="Nom" class="text-danger text-lg"></span>
+                </div>
+                <div class="form-group mb-4">
+                    <label asp-for="Prenom" class="control-label text-blue-800 font-bold text-lg"></label>
+                    <input asp-for="Prenom" class="form-control rounded-lg shadow-md p-2 border border-blue-400 text-lg" />
+                    <span asp-validation-for="Prenom" class="text-danger text-lg"></span>
+                </div>
+                <div class="form-group mb-4">
+                    <label asp-for="Telephone" class="control-label text-blue-800 font-bold text-lg"></label>
+                    <input asp-for="Telephone" class="form-control rounded-lg shadow-md p-2 border border-blue-400 text-lg" />
+                    <span asp-validation-for="Telephone" class="text-danger text-lg"></span>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-4">
+                <h5 class="text-xl font-bold mb-2 text-blue-800">Autres informations</h5>
+                <div class="form-group mb-4">
+                    <label asp-for="Solde" class="control-label text-blue-800 font-bold text-lg"></label>
+                    <input asp-for="Solde" class="form-control rounded-lg shadow-md p-2 border border-blue-400 text-lg" />
+                    <span asp-validation-for="Solde" class="text-danger text-lg"></span>
+                </div>
+                <div class="form-group mb-4">
+                    <label asp-for="Adresse" class="control-label text-blue-800 font-bold text-lg"></label>
+                    <input asp-for="Adresse" class="form-control rounded-lg shadow-md p-2 border border-blue-400 text-lg" />
+                    <span asp-validation-for="Adresse" class="text-danger text-lg"></span>
+                </div>
+                <div class="form-group mb-4">
+                    <label asp-for="UserId" class="control-label text-blue-800 font-bold text-lg"></label>
+                    <select asp-for="UserId" class="form-control rounded-lg shadow-md p-2 border border-blue-400 text-lg" asp-items="ViewBag.usersId"></select>
+                </div>
+            </div>
+        </div>
+  <div class="flex justify-center mt-4">
+<div class="flex justify-center mt-4">
+        <a href="@Url.Action("Index", "Client")" 
+           class="btn btn-secondary rounded-lg shadow-md p-2 bg-blue-200 hover:bg-blue-300 text-blue-800 text-lg mr-4">
+           Retour à la liste
+        </a>
+        <button type="submit" 
+                class="btn btn-primary rounded-lg shadow-md p-2 bg-blue-500 hover:bg-blue-700 text-white text-lg ml-4">
+            Créer client
+        </button>
+    </div>
+</div>
+    </div>
+
+</body>
+</html>

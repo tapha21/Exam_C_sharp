@@ -1,0 +1,78 @@
+@model ges_commande.Models.entity.Produit
+
+@{
+   @* Layout= "_Layout"; *@
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Détails du Produit</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-6">
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h4 class="text-2xl font-semibold text-gray-800 mb-6">Détails du Produit</h4>
+            <hr class="mb-6">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Colonne gauche : Image et Libellé -->
+                <div class="flex flex-col items-start">
+                    <div>
+                        <dt class="text-gray-600 font-medium">Image</dt>
+                        <dd class="text-gray-800">
+                           @if (!string.IsNullOrEmpty(Model.image))
+                            {
+                                <div class="mt-4">
+                                    <img src="@Model.image" alt="Image produit" class="w-32 h-32 object-cover mt-2" />
+                                </div>
+                            }
+                            else
+                            {
+                                <p class="text-gray-600">Aucune image disponible</p>
+                            }
+                        </dd>
+                    </div>
+
+                    <div>
+                        <dt class="text-gray-600 font-medium">Libellé</dt>
+                        <dd class="text-gray-800">@Html.DisplayFor(model => model.Libelle)</dd>
+                    </div>
+                </div>
+
+                <!-- Colonne droite : Détails supplémentaires -->
+                <div class="flex flex-col items-start">
+                    <!-- Prix -->
+                    <div>
+                        <dt class="text-gray-600 font-medium">Prix</dt>
+                        <dd class="text-gray-800">@Html.DisplayFor(model => model.Prix)</dd>
+                    </div>
+
+                    <!-- Quantité -->
+                    <div>
+                        <dt class="text-gray-600 font-medium">Quantité</dt>
+                        <dd class="text-gray-800">@Html.DisplayFor(model => model.Quantite)</dd>
+                    </div>
+
+                    <!-- Date de création -->
+                    <div>
+                        <dt class="text-gray-600 font-medium">Date de création</dt>
+                        <dd class="text-gray-800">@Html.DisplayFor(model => model.CreateAt)</dd>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="mt-6 flex items-center space-x-4">
+                <!-- Bouton Edit -->
+                <a asp-action="Edit" asp-route-id="@Model?.Id" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded shadow">Modifier</a>
+
+                <!-- Bouton Back to List -->
+                <a asp-action="MesProduit" class="text-blue-500 hover:text-blue-700 font-medium">Retour à la liste</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
